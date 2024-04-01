@@ -16,11 +16,11 @@ describe('Check-in Use Case', () => {
 
     gymsRepository.items.push({
       id: 'gym-01',
-      title: 'Academia de Uberaba',
-      description: 'Academia biotech',
+      title: 'Smartfit',
+      description: 'Academia Smartfit',
       phone: '',
-      latitude: new Decimal(0),
-      longitude: new Decimal(0),
+      latitude: new Decimal(-19.7572706),
+      longitude: new Decimal(-47.936054),
     })
 
     vi.useFakeTimers()
@@ -81,5 +81,25 @@ describe('Check-in Use Case', () => {
     })
 
     expect(checkIn.id).toEqual(expect.any(String))
+  })
+
+  it('should not be able to check in on distant gym', async () => {
+    gymsRepository.items.push({
+      id: 'gym-02',
+      title: 'Biotech Prime',
+      description: 'Academia Biotech Prime',
+      phone: '',
+      latitude: new Decimal(-19.750918),
+      longitude: new Decimal(-47.9659377),
+    })
+
+    await expect(() =>
+      sut.execute({
+        gymId: 'gym-02',
+        userId: 'user-01',
+        userLatitude: -19.7572706,
+        userLongitude: -47.936054,
+      }),
+    ).rejects.toBeInstanceOf(Error)
   })
 })
