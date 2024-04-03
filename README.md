@@ -21,7 +21,7 @@ GymPass atyle app.
 - [x] O usuário não deve poder se cadastrar com um email duplicado;
 - [x] O usuário não pode fazer 2 check-ins no mesmo dia;
 - [x] O usuário não pode fazer check-in se não estiver perto (100 metros) da academia;
-- [ ] O check-in só pode ser validado, 20 minutos após ser criado;
+- [x] O check-in só pode ser validado, 20 minutos após ser criado;
 - [ ] O check-in só pode ser validado por administradores;
 - [ ] A academia só pode ser cadastrada por administradores;
 
